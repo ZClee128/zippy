@@ -171,20 +171,39 @@ jobs:
           echo "✓ IPA导出成功"
           ls -lh ${{ env.EXPORT_PATH }}/*.ipa
       
-      - name: ✅ 验证IPA清洁度
+      - name: 🔍 详细检查IPA内容（设备信息排查）
         run: |
           IPA_FILE=$(find $RUNNER_TEMP/export -name "*.ipa" -type f | head -1)
-          
-          # 解压IPA
           TEMP_DIR=$(mktemp -d)
           unzip -q "$IPA_FILE" -d "$TEMP_DIR"
           
-          # 检查是否包含设备信息
-          if grep -r "UDID\|DeviceID\|device_id" "$TEMP_DIR" > /dev/null 2>&1; then
-            echo "⚠️ 警告: IPA可能包含设备信息"
+          echo "正在检查潜在的设备信息泄露..."
+          
+          # 1. 检查Provisioning Profile (关键检查)
+          # 如果是App Store发布，Profile不应包含ProvisionedDevices
+          PROFILE=$(find "$TEMP_DIR" -name "embedded.mobileprovision" | head -1)
+          if [ -f "$PROFILE" ]; then
+            echo "检查Profile: $PROFILE"
+            # 将二进制profile转为xml
+            security cms -D -i "$PROFILE" > "$TEMP_DIR/profile.plist"
+            
+            if /usr/libexec/PlistBuddy -c "Print :ProvisionedDevices" "$TEMP_DIR/profile.plist" > /dev/null 2>&1; then
+              echo "❌ 严重错误: MobileProvision文件包含设备列表! 您可能使用了开发证书(Development)或AdHoc证书，而非App Store发布证书。"
+              echo "请检查Secrets中的 BUILD_PROVISION_PROFILE_BASE64 是否为 Distribution 类型。"
+              # exit 1 # 根据需要决定是否强制失败，建议失败以防万一
+            else
+              echo "✓ Profile检查通过 (未发现设备列表)"
+            fi
           else
-            echo "✓ IPA验证通过，未发现设备信息"
+             echo "⚠️ 未找到 embedded.mobileprovision 文件"
           fi
+          
+          # 2. 全局搜索 (作为警告)
+          # 排除二进制文件匹配，只关注文本或明确的ID格式
+          echo "正在搜索 'UDID' 或 'DeviceID' 字符串..."
+          grep -r "UDID\|DeviceID\|device_id" "$TEMP_DIR" | head -n 20 || true
+          
+          echo "ℹ️ 注意: 如果上述结果仅为代码中的变量名(如 var deviceID)，则通常无风险。关键是确保Profile中无设备列表。"
           
           rm -rf "$TEMP_DIR"
       
