@@ -27,10 +27,10 @@ struct FeedView: View {
                 }
                 .padding(.vertical, AppTheme.paddingMedium)
             }
-            .background(AppTheme.lightOceanGradient)
             .edgesIgnoringSafeArea(.bottom) // optional, but good for background
             .navigationBarTitle(Text("Feed"), displayMode: .inline)
         }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
 }
 

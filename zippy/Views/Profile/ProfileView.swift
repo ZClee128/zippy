@@ -151,6 +151,7 @@ struct ProfileView: View {
                         .environmentObject(authViewModel)
                 }
         )
+        .navigationViewStyle(StackNavigationViewStyle())
     }
     
     // Custom Grid implementation

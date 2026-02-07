@@ -27,7 +27,7 @@ struct DiscoverView: View {
                         VStack(alignment: .leading, spacing: 12) {
                             Text("Popular Tags")
                                 .font(AppTheme.headline)
-                                .padding(.horizontal)
+                                .padding(.horizontal, 30)
                             
                             ScrollView(.horizontal, showsIndicators: false) {
                                 HStack(spacing: 12) {
@@ -46,7 +46,7 @@ struct DiscoverView: View {
                         VStack(alignment: .leading, spacing: 12) {
                             Text("Expert Insights")
                                 .font(AppTheme.headline)
-                                .padding(.horizontal)
+                                .padding(.horizontal, 30)
                             
                             NavigationLink(destination: ArticleDetailView(
                                 title: "Beginners Guide to Saltwater Tanks",
@@ -79,7 +79,7 @@ struct DiscoverView: View {
                         VStack(alignment: .leading, spacing: 12) {
                             Text("Trending Posts")
                                 .font(AppTheme.headline)
-                                .padding(.horizontal)
+                                .padding(.horizontal, 30)
                             
                             ForEach(feedViewModel.posts.prefix(3)) { post in
                                 NavigationLink(destination: PostDetailView(post: post)) {
@@ -97,6 +97,7 @@ struct DiscoverView: View {
             }
             .navigationBarTitle(Text("Discover"), displayMode: .inline)
         }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
 }
 

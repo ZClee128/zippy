@@ -33,6 +33,7 @@ struct ChatListView: View {
             }
             .navigationBarTitle(Text("Messages"), displayMode: .inline)
         }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
 }
 
