@@ -1,0 +1,153 @@
+{
+  "identifier" : "E2C5B3D1",
+  "nonRenewingSubscriptions" : [
+
+  ],
+  "products" : [
+    {
+      "displayPrice" : "0.99",
+      "familyShareable" : false,
+      "internalID" : "F4D821B2",
+      "localizations" : [
+        {
+          "description" : "32 Coins for spending",
+          "displayName" : "32 Coins",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "Zippy",
+      "referenceName" : "32 Coins",
+      "type" : "Consumable"
+    },
+    {
+      "displayPrice" : "1.99",
+      "familyShareable" : false,
+      "internalID" : "A1B2C3D4",
+      "localizations" : [
+        {
+          "description" : "60 Coins for spending",
+          "displayName" : "60 Coins",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "Zippy1",
+      "referenceName" : "60 Coins",
+      "type" : "Consumable"
+    },
+    {
+      "displayPrice" : "2.99",
+      "familyShareable" : false,
+      "internalID" : "B2C3D4E5",
+      "localizations" : [
+        {
+          "description" : "96 Coins for spending",
+          "displayName" : "96 Coins",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "Zippy2",
+      "referenceName" : "96 Coins",
+      "type" : "Consumable"
+    },
+    {
+      "displayPrice" : "4.99",
+      "familyShareable" : false,
+      "internalID" : "C3D4E5F6",
+      "localizations" : [
+        {
+          "description" : "155 Coins for spending",
+          "displayName" : "155 Coins",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "Zippy4",
+      "referenceName" : "155 Coins",
+      "type" : "Consumable"
+    },
+    {
+      "displayPrice" : "5.99",
+      "familyShareable" : false,
+      "internalID" : "D4E5F6G7",
+      "localizations" : [
+        {
+          "description" : "189 Coins for spending",
+          "displayName" : "189 Coins",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "Zippy5",
+      "referenceName" : "189 Coins",
+      "type" : "Consumable"
+    },
+    {
+      "displayPrice" : "9.99",
+      "familyShareable" : false,
+      "internalID" : "E5F6G7H8",
+      "localizations" : [
+        {
+          "description" : "359 Coins for spending",
+          "displayName" : "359 Coins",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "Zippy9",
+      "referenceName" : "359 Coins",
+      "type" : "Consumable"
+    },
+    {
+      "displayPrice" : "19.99",
+      "familyShareable" : false,
+      "internalID" : "F6G7H8I9",
+      "localizations" : [
+        {
+          "description" : "729 Coins for spending",
+          "displayName" : "729 Coins",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "Zippy19",
+      "referenceName" : "729 Coins",
+      "type" : "Consumable"
+    },
+    {
+      "displayPrice" : "49.99",
+      "familyShareable" : false,
+      "internalID" : "G7H8I9J0",
+      "localizations" : [
+        {
+          "description" : "1869 Coins for spending",
+          "displayName" : "1869 Coins",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "Zippy49",
+      "referenceName" : "1869 Coins",
+      "type" : "Consumable"
+    },
+    {
+      "displayPrice" : "99.99",
+      "familyShareable" : false,
+      "internalID" : "H8I9J0K1",
+      "localizations" : [
+        {
+          "description" : "3799 Coins for spending",
+          "displayName" : "3799 Coins",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "Zippy99",
+      "referenceName" : "3799 Coins",
+      "type" : "Consumable"
+    }
+  ],
+  "settings" : {
+
+  },
+  "subscriptionGroups" : [
+
+  ],
+  "version" : {
+    "major" : 2,
+    "minor" : 0
+  }
+}
