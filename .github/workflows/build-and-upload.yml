@@ -99,6 +99,13 @@ jobs:
           
           echo "✓ 证书和Profile导入成功"
       
+      - name: 📝 获取Provisioning Profile UUID
+        run: |
+          PP_PATH=$RUNNER_TEMP/build_pp.mobileprovision
+          UUID=$(/usr/libexec/PlistBuddy -c "Print UUID" /dev/stdin <<< $(security cms -D -i $PP_PATH))
+          echo "PP_UUID=$UUID" >> $GITHUB_ENV
+          echo "Found UUID: $UUID"
+      
       - name: 🏗️ 构建Archive（无设备关联）
         run: |
           echo "开始构建Archive..."
@@ -109,7 +116,8 @@ jobs:
             -configuration ${{ env.CONFIGURATION }} \
             -archivePath ${{ env.ARCHIVE_PATH }} \
             -destination 'generic/platform=iOS' \
-            -allowProvisioningUpdates \
+            CODE_SIGN_STYLE="Manual" \
+            PROVISIONING_PROFILE="${{ env.PP_UUID }}" \
             CODE_SIGN_IDENTITY="Apple Distribution" \
             DEVELOPMENT_TEAM="${{ secrets.TEAM_ID }}"
           
